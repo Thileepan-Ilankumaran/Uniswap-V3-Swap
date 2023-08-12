@@ -7,6 +7,27 @@ function App() {
   const [signer, setSigner] = useState(undefined)
   const [signerAddress, setSignerAddress] = useState(undefined)
 
+  useEffect(() => {
+    const onLoad =async () => {
+      const provider = await new ethers.providers.Web3Provider(window.ethereum)
+      setProvider(provider)
+    }
+    onLoad()
+  }, [])
+
+  const getSigner = async provider => {
+    provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    setSigner(signer)
+  }
+  const isConnected = () => signer !== undefined
+  const getWalletAddress = () => {
+    signer.getAddress()
+      .then(address => {
+        setSignerAddress(address)
+
+        // todo: connect weth and uni contracts 
+  }
   return (
     <div className="App">
       

@@ -27,10 +27,24 @@ function App() {
         setSignerAddress(address)
 
         // todo: connect weth and uni contracts 
+    })
   }
+
+  if(signer !== undefined) {
+    getWalletAddress()
+  }
+
   return (
     <div className="App">
-      
+      <div className='appNav'>
+        <div className='my-2 buttonContainer buttonContainerTop'>
+          <PageButton name = {"Swap"} isBold={true} />
+          <PageButton name = {"Pool"} />
+          <PageButton name = {"Vote"} />
+          <PageButton name = {"Charts"} />
+
+        </div>
+      </div>
     </div>
   );
 }
